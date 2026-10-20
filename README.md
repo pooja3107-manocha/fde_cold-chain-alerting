@@ -92,7 +92,7 @@ Open `out/seed/report.html` in any browser by double-clicking it; it needs no se
 - **What the engine decided** (click to expand): every decision with its reason
 - **Raw readings** (click to expand): every row from the file in time order, with its position in the file, temperature, humidity and a status (in range, too warm, too cold, sensor fault, missing). Use it to walk through T-04's gap and T-05's shuffled rows row by row.
 
-`out/scenarios/report.html` has the same chart for each of the 15 scenarios.
+`out/scenarios/report.html` has the same chart for each of the 16 scenarios.
 
 ## 3. The ops dashboard
 
@@ -161,6 +161,7 @@ Each file in `scenarios/` is a small story about one truck plus the exact events
 | 13 | Reading stamped 3 h in the future | Rejected as a device clock problem |
 | 14 | T-04's pattern: repeat excursion with a missing reading | Alert at 20 min, naming the earlier excursion |
 | 15 | T-03's pattern: close to 8 °C, never over | Nothing raised |
+| 16 | Sensor goes quiet while an incident is recovering | Paged; recovery clock restarts when data returns, so unseen minutes never count as stable |
 
 ## Project layout
 
@@ -180,7 +181,7 @@ src/ColdChain.Dashboard/        ops dashboard API: sign-in, per-user truck acces
 ui-src/                         React + TypeScript dashboard UI (Vite; builds into the dashboard's wwwroot)
   src/components/               Login, FleetView, TruckView, TempChart
 tests/ColdChain.Tests/          xUnit tests
-scenarios/                      15 edge-case scenarios
+scenarios/                      16 edge-case scenarios
 starter_kit/                    the provided starter kit, unchanged
 tools/starter_baseline.py       runs the starter utility on the same data
 SOLUTION_DESIGN.md              design, assumptions and trade-offs

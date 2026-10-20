@@ -208,6 +208,8 @@ public sealed class TruckMonitor
             {
                 _pendingSawGap = true;
                 if (_incident is not null) _incident.IncludesDataGap = true;
+                // Recovery must be observed: unseen minutes never count towards the 15 stable minutes.
+                if (_phase == Phase.Recovering) _recoveringSince = r.Timestamp;
             }
         }
         _lastProcessedTs = r.Timestamp;

@@ -30,7 +30,7 @@ Out of 21 readings above 8 °C, the engine raises 3 alerts. The full list with r
 | Same problem or new | Relapse within 60 min of resolving reopens the same incident; reminders hourly | One alert per problem; a failing unit stays one story. |
 | Missing reading | Time between readings counts as out of range if the truck was out of range before the gap | Unknown is treated as unsafe. Durations come from timestamps, never from counting readings. |
 | Out of order | The seed file has no arrival times, so it is evaluated in timestamp order. Live, a 10-min buffer reorders late readings; later ones are logged for review, not applied | Deterministic results without rewriting history. |
-| Silence | No reading for 15 min while out of range pages immediately; while in range, a warning | A quiet sensor during an excursion is the most dangerous case. |
+| Silence | No reading for 15 min while out of range, or while an incident is still recovering, pages immediately; otherwise a warning | A quiet sensor during an excursion is the most dangerous case, and an unconfirmed recovery is not yet safe. |
 | Timestamps | No timezone in the data; read as UTC | To confirm with Nimbus. |
 | Humidity | Context in the summary only; not used to decide | Rising humidity with temperature suggests warm air or a failing unit, but one hour of data can't validate a rule. |
 
@@ -45,7 +45,7 @@ readings (any order, gaps) -> reorder buffer -> per-truck state machine -> event
                                                 Normal -> Pending -> Alerting -> Recovering -> resolved
 ```
 
-**Pending** means out of range but within tolerance. It ends quietly as a logged blip, or it becomes **one alert**, which names any missing readings and any earlier short excursions in the last hour. **Alerting** sends hourly reminders, never a second alert. **Recovering** waits 15 minutes before resolving; going out of range again continues the same incident. Separately, each truck is watched for silence, implausible values (such as -127 °C, a common probe fault code) and readings with bad device clocks. Trucks never share state.
+**Pending** means out of range but within tolerance. It ends quietly as a logged blip, or it becomes **one alert**, which names any missing readings and any earlier short excursions in the last hour. **Alerting** sends hourly reminders, never a second alert. **Recovering** waits for 15 observed minutes back in range before resolving; a data gap restarts that clock, and going out of range again continues the same incident. Separately, each truck is watched for silence, implausible values (such as -127 °C, a common probe fault code) and readings with bad device clocks. Trucks never share state.
 
 ## Trade-offs
 
@@ -69,5 +69,9 @@ Each alert gets a plain-English summary for ops. By default it comes from a temp
 4. **Rules on the truck** (IoT Edge) to warn drivers without signal; arrival timestamps from the gateway to make lateness measurable.
 5. **Door-open and unit-status signals** to separate door openings from failing units, and, with months of history, predict failing units early.
 6. **Delivery and acknowledgement**: SMS or Teams pages, escalation if unacknowledged, fleet-level alerts when many trucks go quiet at once.
+
+## Ops dashboard
+
+A small sign-in web app shows the fleet, each truck's chart, its alerts with reasons and its raw file rows (including T-04's missing reading and T-05's out-of-order rows). It reads the engine's results through an API and makes no decisions of its own. Sign-in uses demo users with per-user truck access; production would use company sign-in.
 
 Production deployment, storage and cost options by fleet size are in [PRODUCTION_ARCHITECTURE.md](PRODUCTION_ARCHITECTURE.md).
