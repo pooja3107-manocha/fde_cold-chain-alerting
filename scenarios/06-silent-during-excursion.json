@@ -1,0 +1,9 @@
+{
+  "name": "06-silent-during-excursion",
+  "title": "The sensor goes quiet for 35 minutes while cargo is warming",
+  "proves": "Missing data during an excursion is treated as danger, not as safety: ops are paged before the full tolerance has passed, and the gap is recorded on the incident.",
+  "profile": "chilled-0-5",
+  "readings": [[0,3.1],[5,3.4],[10,4.2],[15,5.3],[20,5.6],[25,6.0],[30,6.3],
+               [65,7.4],[70,7.1],[75,6.2],[80,5.4],[85,4.4],[90,3.9],[95,3.6],[100,3.4],[105,3.2]],
+  "expect": { "sequence": ["SensorSilentDuringExcursion", "DeviceBackOnline", "ExcursionAlert", "Resolved"], "incidents": 1 }
+}

@@ -1,0 +1,57 @@
+{
+  // Every threshold here is an assumption to confirm with Nimbus and each shipper.
+  // The engine reads them at startup; changing a number never needs a code change.
+  "engine": {
+    "expectedIntervalMinutes": 5,    // the provided sensors report every 5 minutes
+    "recurrenceWindowMinutes": 60,   // earlier short excursions within this window are mentioned in an alert
+    "silenceThresholdMinutes": 15,   // ~3 missed readings at a 5-minute cadence
+    "allowedLatenessMinutes": 10,    // how long we wait to put out-of-order readings back in order
+    "maxFutureSkewMinutes": 5,       // readings stamped further ahead than this are a bad device clock
+    "plausibleMinC": -50,
+    "plausibleMaxC": 60,
+    "knownFaultValues": [-127, 85]   // common probe codes: disconnected, power-on reset
+  },
+
+  // The seed data has no cargo type, so every truck is mapped to pharma in data/trucks.csv.
+  // Unknown trucks get the strictest profile: over-alerting beats missing a pharma load.
+  "defaultProfile": "pharma-2-8",
+
+  "profiles": [
+    {
+      "name": "pharma-2-8",
+      "description": "Refrigerated medicines and vaccines",
+      "minC": 2.0,
+      "maxC": 8.0,
+      "highToleranceMinutes": 20,    // 4 consecutive readings; a door opening is 1-2. See README "sensitivity".
+      "lowToleranceMinutes": 10,     // freezing destroys many vaccines, so cold is tolerated for less time
+      "hysteresisC": 0.5,
+      "clearAfterMinutes": 15,
+      "reopenWindowMinutes": 60,
+      "reminderIntervalMinutes": 60
+    },
+    {
+      "name": "chilled-0-5",
+      "description": "Chilled grocery: dairy, meat, fresh produce",
+      "minC": 0.0,
+      "maxC": 5.0,
+      "highToleranceMinutes": 45,
+      "lowToleranceMinutes": 30,
+      "hysteresisC": 0.5,
+      "clearAfterMinutes": 15,
+      "reopenWindowMinutes": 60,
+      "reminderIntervalMinutes": 60
+    },
+    {
+      "name": "frozen",
+      "description": "Frozen food",
+      "minC": -40.0,
+      "maxC": -15.0,
+      "highToleranceMinutes": 45,
+      "lowToleranceMinutes": 240,
+      "hysteresisC": 1.0,
+      "clearAfterMinutes": 15,
+      "reopenWindowMinutes": 60,
+      "reminderIntervalMinutes": 60
+    }
+  ]
+}

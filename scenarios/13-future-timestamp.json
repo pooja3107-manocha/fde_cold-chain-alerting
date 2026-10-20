@@ -1,0 +1,8 @@
+{
+  "name": "13-future-timestamp",
+  "title": "One reading arrives stamped three hours in the future",
+  "proves": "Device clocks drift in IoT. A reading from 'the future' is rejected and flagged instead of corrupting the timeline.",
+  "profile": "pharma-2-8",
+  "readings": [[0,5.0],[5,5.1],[190,5.2,-180],[10,5.0],[15,5.1],[20,5.0]],
+  "expect": { "sequence": ["ReadingRejected"], "incidents": 0 }
+}

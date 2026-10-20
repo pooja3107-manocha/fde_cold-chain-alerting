@@ -1,0 +1,8 @@
+{
+  "name": "07-offline-while-normal",
+  "title": "The truck drives through a dead zone with cargo comfortably in range",
+  "proves": "Different gaps deserve different responses: a quiet device with safe cargo is a warning, not a page.",
+  "profile": "pharma-2-8",
+  "readings": [[0,5.0],[5,5.1],[10,5.0],[15,5.2],[50,5.3],[55,5.1],[60,5.0]],
+  "expect": { "sequence": ["DeviceOffline", "DeviceBackOnline"], "incidents": 0 }
+}

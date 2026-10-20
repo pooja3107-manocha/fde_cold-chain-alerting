@@ -1,0 +1,8 @@
+{
+  "name": "15-near-limit-never-breaches",
+  "title": "Cargo warms to 7.0 °C and cools again without crossing 8 °C (truck T-03's pattern)",
+  "proves": "Nothing is raised for a truck that stays in range, however close it gets. Early warning on trends is future work, not a v1 alert.",
+  "profile": "pharma-2-8",
+  "readings": [[0,5.8],[5,6.0],[10,6.2],[15,6.5],[20,6.7],[25,6.9],[30,7.0],[35,6.8],[40,6.6],[45,6.3],[50,6.1]],
+  "expect": { "sequence": [], "incidents": 0 }
+}

@@ -1,0 +1,8 @@
+{
+  "name": "11-too-cold-vaccines",
+  "title": "A vaccine load drops below 2 °C",
+  "proves": "'Too warm' is only half the problem. Freezing can destroy vaccines, so cold excursions alert too, with a shorter tolerance.",
+  "profile": "pharma-2-8",
+  "readings": [[0,4.8],[5,3.9],[10,1.6],[15,1.2],[20,0.9],[25,1.1],[30,1.8],[35,2.7],[40,3.6],[45,4.2],[50,4.6],[55,4.9]],
+  "expect": { "sequence": ["ExcursionAlert", "Resolved"], "incidents": 1 }
+}

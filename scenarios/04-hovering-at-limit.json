@@ -1,0 +1,9 @@
+{
+  "name": "04-hovering-at-limit",
+  "title": "A frozen load hovers right at -15 °C for an hour",
+  "proves": "Hysteresis: a dip to -15.3 °C is not a recovery, so the hovering is recognised as one sustained problem. A naive threshold would page five times; without hysteresis it would never alert at all.",
+  "profile": "frozen",
+  "readings": [[0,-19.8],[5,-17.2],[10,-14.8],[15,-15.3],[20,-14.6],[25,-15.4],[30,-14.9],[35,-15.2],[40,-14.7],
+               [45,-15.5],[50,-14.8],[55,-15.1],[60,-16.4],[65,-17.5],[70,-18.6],[75,-19.4],[80,-19.9]],
+  "expect": { "sequence": ["ExcursionAlert", "Resolved"], "incidents": 1 }
+}

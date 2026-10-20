@@ -1,0 +1,9 @@
+{
+  "name": "02-sustained-excursion",
+  "title": "The cooling unit struggles and cargo stays above 8 °C, then recovers",
+  "proves": "A genuine sustained problem raises exactly one alert, and the incident closes with duration and peak recorded.",
+  "profile": "pharma-2-8",
+  "readings": [[0,5.4],[5,6.1],[10,7.0],[15,8.3],[20,8.7],[25,9.0],[30,9.4],[35,9.6],[40,9.5],[45,9.2],
+               [50,8.6],[55,7.9],[60,7.2],[65,6.4],[70,5.9],[75,5.6],[80,5.4],[85,5.3]],
+  "expect": { "sequence": ["ExcursionAlert", "Resolved"], "incidents": 1 }
+}

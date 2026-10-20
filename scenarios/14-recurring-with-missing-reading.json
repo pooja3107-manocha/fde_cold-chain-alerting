@@ -1,0 +1,8 @@
+{
+  "name": "14-recurring-with-missing-reading",
+  "title": "Two excursions 10 minutes apart, with a reading missing from the second (truck T-04's pattern)",
+  "proves": "Duration comes from timestamps, not from counting readings, so a missing reading cannot hide an excursion. The alert also names the earlier short excursion, because a repeat points to a failing unit.",
+  "profile": "pharma-2-8",
+  "readings": [[0,6.5],[5,8.4],[10,8.6],[15,7.0],[20,7.5],[25,8.7],[30,8.9],[40,9.1],[45,8.5],[50,7.2]],
+  "expect": { "sequence": ["BlipIgnored", "ExcursionAlert"], "incidents": 1 }
+}

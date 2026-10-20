@@ -1,0 +1,8 @@
+{
+  "name": "10-late-beyond-window",
+  "title": "A buffered reading showing 9.4 °C turns up 40 minutes late",
+  "proves": "Honesty over a tidy timeline: data too late to act on is flagged for review instead of silently dropped or rewriting history.",
+  "profile": "pharma-2-8",
+  "readings": [[0,5.1],[5,5.0],[10,5.2],[15,9.4,40],[20,5.1],[25,5.0],[30,5.2],[35,5.1],[40,5.0],[45,5.1],[50,5.2],[55,5.0],[60,5.1]],
+  "expect": { "sequence": ["LateReading"], "incidents": 0 }
+}

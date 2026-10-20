@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <!-- Ops dashboard: a small API over the engine plus the React UI (built from ui-src into wwwroot).
+       Uses only the ASP.NET Core shared framework, so it needs no NuGet downloads. -->
+
+  <ItemGroup>
+    <ProjectReference Include="..\ColdChain.Core\ColdChain.Core.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,10 @@
+{
+  "name": "03-long-excursion-no-realert",
+  "title": "Cargo stays warm for three hours",
+  "proves": "One alert per incident, then hourly reminders instead of a new alert on every reading: the second half of the noise problem.",
+  "profile": "pharma-2-8",
+  "readings": [[0,5.0],[10,8.4],[20,8.9],[30,9.3],[40,9.8],[50,10.2],[60,10.5],[70,10.6],[80,10.8],[90,10.9],
+               [100,11.0],[110,11.0],[120,11.1],[130,11.0],[140,10.9],[150,11.1],[160,11.0],[170,11.2],[180,11.1],
+               [190,11.0],[200,11.2]],
+  "expect": { "sequence": ["ExcursionAlert", "Reminder", "Reminder"], "incidents": 1 }
+}

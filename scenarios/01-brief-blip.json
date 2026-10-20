@@ -1,0 +1,8 @@
+{
+  "name": "01-brief-blip",
+  "title": "A door opening pushes the temperature over 8 °C for 10 minutes",
+  "proves": "Brief blips do not page ops: the first half of Priya's noise problem.",
+  "profile": "pharma-2-8",
+  "readings": [[0,5.1],[5,5.2],[10,5.0],[15,8.6],[20,9.1],[25,6.8],[30,5.6],[35,5.2],[40,5.1],[45,5.0]],
+  "expect": { "sequence": ["BlipIgnored"], "incidents": 0 }
+}

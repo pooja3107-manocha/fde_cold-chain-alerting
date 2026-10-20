@@ -1,0 +1,6 @@
+truck_id,cargo_profile,description
+T-01,pharma-2-8,Cargo type not in the data: assumed pharma (strictest profile)
+T-02,pharma-2-8,Cargo type not in the data: assumed pharma (strictest profile)
+T-03,pharma-2-8,Cargo type not in the data: assumed pharma (strictest profile)
+T-04,pharma-2-8,Cargo type not in the data: assumed pharma (strictest profile)
+T-05,pharma-2-8,Cargo type not in the data: assumed pharma (strictest profile)

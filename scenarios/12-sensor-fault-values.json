@@ -1,0 +1,8 @@
+{
+  "name": "12-sensor-fault-values",
+  "title": "The probe reports 85 °C once, then -127 °C for 25 minutes",
+  "proves": "Impossible values are sensor faults, not excursions. A probe stuck on fault codes is a device problem, so it surfaces as offline rather than as 'cargo frozen'.",
+  "profile": "pharma-2-8",
+  "readings": [[0,5.0],[5,5.1],[10,85.0],[15,5.2],[20,5.0],[25,-127],[30,-127],[35,-127],[40,-127],[45,-127],[50,5.1],[55,5.0],[60,5.2]],
+  "expect": { "sequence": ["SensorFault", "SensorFault", "DeviceOffline", "DeviceBackOnline"], "incidents": 0 }
+}

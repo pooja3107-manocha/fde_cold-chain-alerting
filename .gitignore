@@ -1,0 +1,11 @@
+bin/
+obj/
+out/
+.vs/
+.idea/
+*.user
+TestResults/
+__pycache__/
+node_modules/
+src/ColdChain.Dashboard/wwwroot/
+*.tsbuildinfo

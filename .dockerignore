@@ -1,0 +1,6 @@
+**/bin
+**/obj
+out
+**/node_modules
+src/ColdChain.Dashboard/wwwroot
+.git
